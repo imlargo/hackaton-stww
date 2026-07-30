@@ -65,11 +65,11 @@
 	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton size="lg" tooltipContent="Home" class="justify-center !p-0">
+				<Sidebar.MenuButton size="lg" tooltipContent="Home" class="h-16! justify-center !p-0">
 					{#snippet child({ props })}
 						<a href="/" {...props}>
-							<div class="flex aspect-square size-10 items-center justify-center">
-								<img src="/logo.png" alt="Mi primera minigranja" class="size-10 object-contain" />
+							<div class="flex aspect-square size-14 items-center justify-center">
+								<img src="/logo.png" alt="Mi primera minigranja" class="size-14 object-contain" />
 							</div>
 						</a>
 					{/snippet}
