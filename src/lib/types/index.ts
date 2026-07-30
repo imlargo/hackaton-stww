@@ -11,5 +11,10 @@ export type {
 	Visit,
 	VisitStatus,
 	Prospect,
-	ProspectStatus
+	ProspectStatus,
+	ContentRequest,
+	ContentRequestType,
+	ContentRequestStatus,
+	MinigranjaPlot,
+	MinigranjaState
 } from './domain';

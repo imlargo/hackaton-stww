@@ -72,11 +72,11 @@
 				>
 					{#snippet child({ props })}
 						<a href="/" {...props}>
-							<div class="flex aspect-square size-8 items-center justify-center">
-								<img src="/logo.png" alt="Mi primera minigranja" class="size-8 object-contain" />
+							<div class="flex aspect-square size-10 items-center justify-center">
+								<img src="/logo.png" alt="Mi primera minigranja" class="size-10 object-contain" />
 							</div>
 							<div class="grid flex-1 text-start text-sm leading-tight">
-								<span class="truncate font-semibold">Mi primera minigranja</span>
+								<span class="truncate font-space-grotesk font-semibold">Mi primera minigranja</span>
 							</div>
 						</a>
 					{/snippet}

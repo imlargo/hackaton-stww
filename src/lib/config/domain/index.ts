@@ -10,6 +10,16 @@ export {
 export type { PermissionGroup, PermissionRole } from './permissions';
 export { FEATURE_FLAGS } from './feature-flags';
 export { PAGINATION_DEFAULTS } from './pagination';
-export { GAMIFICATION } from './gamification';
+export {
+	GAMIFICATION,
+	LEVELS,
+	BADGES,
+	getLevel,
+	getNextLevel,
+	getLevelProgress,
+	getBadgeStates
+} from './gamification';
+export type { GamificationLevel, GamificationBadge, GamificationStats, LevelProgress } from './gamification';
 export { NAVIGATION_ITEMS, NAVIGATION_GROUP_LABELS, NavigationGroup } from './navigation';
 export type { NavigationItem } from './navigation';
+export { MINIGRANJA_GAME } from './minigranja';

@@ -5,3 +5,5 @@ export type { Animal } from './animal';
 export type { Lesson, StudentProgress } from './lesson';
 export type { Visit, VisitStatus } from './visit';
 export type { Prospect, ProspectStatus } from './prospect';
+export type { ContentRequest, ContentRequestType, ContentRequestStatus } from './content-request';
+export type { MinigranjaPlot, MinigranjaState } from './minigranja';
