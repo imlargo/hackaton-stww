@@ -22,7 +22,7 @@
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Progress } from '$lib/components/ui/progress/index.js';
 	import { getLevel, getLevelProgress, LEVELS, getBadgeStates } from '$lib/config';
-	import { getInitials } from '$lib/utils';
+	import { getInitials } from '$lib/utils/string';
 	import SchoolIcon from '@lucide/svelte/icons/school';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import LoaderCircleIcon from '@lucide/svelte/icons/loader-circle';
