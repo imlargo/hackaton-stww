@@ -4,10 +4,12 @@
 
 	let {
 		students,
-		value = $bindable(null)
+		value,
+		onchange
 	}: {
 		students: Student[];
 		value: string | null;
+		onchange: (value: string | null) => void;
 	} = $props();
 
 	const options = $derived(
@@ -20,5 +22,5 @@
 
 <div class="flex items-center gap-2">
 	<span class="text-sm text-muted-foreground whitespace-nowrap">Modo demo, ver como:</span>
-	<Select {options} value={value ?? undefined} onchange={(v: string) => (value = v || null)} />
+	<Select {options} value={value ?? undefined} onchange={(v: string) => onchange(v || null)} />
 </div>

@@ -21,7 +21,9 @@
 		!studentsStore.loaded || !schoolsStore.loaded || !lessonsStore.loaded || !animalsStore.loaded
 	);
 
-	const student = $derived(selectedStudentId ? studentsStore.byId(selectedStudentId) : null);
+	/** Explicit selection wins; otherwise default to the first student once loaded. */
+	const effectiveStudentId = $derived(selectedStudentId ?? studentsStore.items[0]?.id ?? null);
+	const student = $derived(effectiveStudentId ? studentsStore.byId(effectiveStudentId) : null);
 	const school = $derived(student ? schoolsStore.byId(student.school_id) : null);
 	const schoolmates = $derived(student ? studentsStore.bySchool(student.school_id) : []);
 	const completedProgress = $derived(
@@ -44,12 +46,6 @@
 	});
 
 	$effect(() => {
-		if (!selectedStudentId && studentsStore.items.length > 0) {
-			selectedStudentId = studentsStore.items[0].id;
-		}
-	});
-
-	$effect(() => {
 		if (student) lessonsStore.loadProgressForStudent(student.id);
 	});
 
@@ -68,7 +64,11 @@
 	>
 		{#snippet actions()}
 			{#if studentsStore.items.length > 0}
-				<StudentSwitcher students={studentsStore.items} bind:value={selectedStudentId} />
+				<StudentSwitcher
+					students={studentsStore.items}
+					value={effectiveStudentId}
+					onchange={(id) => (selectedStudentId = id)}
+				/>
 			{/if}
 		{/snippet}
 	</PageHeader>
