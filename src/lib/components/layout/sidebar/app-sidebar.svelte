@@ -83,8 +83,7 @@
 								<LayoutIcon class="size-4" />
 							</div>
 							<div class="grid flex-1 text-start text-sm leading-tight">
-								<!-- Replace "App" with your application name -->
-								<span class="truncate font-semibold">App</span>
+								<span class="truncate font-semibold">Mi primera minigranja</span>
 							</div>
 						</a>
 					{/snippet}

@@ -8,10 +8,11 @@
 </script>
 
 <svelte:head>
+	<title>Mi primera minigranja</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<ModeWatcher />
+<ModeWatcher defaultMode="dark" />
 <Toaster />
 
 <a
