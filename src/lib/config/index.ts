@@ -6,6 +6,13 @@ export {
 	FEATURE_FLAGS,
 	PAGINATION_DEFAULTS,
 	GAMIFICATION,
+	LEVELS,
+	BADGES,
+	getLevel,
+	getNextLevel,
+	getLevelProgress,
+	getBadgeStates,
+	MINIGRANJA_GAME,
 	PermissionKey,
 	ROLE_PRIORITY,
 	ROLE_LABELS,
@@ -16,4 +23,12 @@ export {
 	NAVIGATION_GROUP_LABELS,
 	NavigationGroup
 } from './domain';
-export type { PermissionGroup, PermissionRole, NavigationItem } from './domain';
+export type {
+	PermissionGroup,
+	PermissionRole,
+	NavigationItem,
+	GamificationLevel,
+	GamificationBadge,
+	GamificationStats,
+	LevelProgress
+} from './domain';
