@@ -26,7 +26,7 @@ const config: AppConfig = {
 	},
 	auth: {
 		baseUrl: env.PUBLIC_AUTH_BASE_URL ?? '',
-		enabled: env.PUBLIC_AUTH_ENABLED !== 'false',
+		enabled: false,
 		loginPath: '/login',
 		defaultRedirectPath: '/',
 		publicRoutes: ['/login', '/authorize', '/logout', '/register'],
