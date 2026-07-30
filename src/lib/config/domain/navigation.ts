@@ -42,6 +42,41 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 		requiredPermissions: [PermissionKey.Settings]
 	},
 	{
+		title: 'Colegio',
+		icon: SchoolIcon,
+		to: '/colegio',
+		group: NavigationGroup.Plataforma,
+		requiredPermissions: [PermissionKey.Colegio]
+	},
+	{
+		title: 'Caracterización',
+		icon: SproutIcon,
+		to: '/caracterizacion',
+		group: NavigationGroup.Plataforma,
+		requiredPermissions: [PermissionKey.Caracterizacion]
+	},
+	{
+		title: 'Estudiante',
+		icon: GraduationCapIcon,
+		to: '/estudiante',
+		group: NavigationGroup.Plataforma,
+		requiredPermissions: [PermissionKey.Estudiante]
+	},
+	{
+		title: 'Unergy',
+		icon: Building2Icon,
+		to: '/unergy',
+		group: NavigationGroup.Plataforma,
+		requiredPermissions: [PermissionKey.Unergy]
+	},
+	{
+		title: 'Visitas',
+		icon: CalendarCheckIcon,
+		to: '/visitas',
+		group: NavigationGroup.Plataforma,
+		requiredPermissions: [PermissionKey.Visitas]
+	},
+	{
 		title: 'Admin',
 		icon: ShieldIcon,
 		to: '/admin',
@@ -52,5 +87,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
 export const NAVIGATION_GROUP_LABELS: Record<NavigationGroup, string> = {
 	[NavigationGroup.Main]: 'Main',
+	[NavigationGroup.Plataforma]: 'Plataforma',
 	[NavigationGroup.Admin]: 'Administration'
 };

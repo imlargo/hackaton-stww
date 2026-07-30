@@ -31,20 +31,16 @@
 		NAVIGATION_ITEMS.filter((item) => hasAnyPermission(currentRole, item.requiredPermissions))
 	);
 
-	let navMainGroups = $derived.by(() => {
-		const mainItems = visibleItems
-			.filter((item) => item.group === NavigationGroup.Main)
-			.map((item) => ({ title: item.title, icon: item.icon, url: item.to }));
+	const GROUP_ORDER = [NavigationGroup.Main, NavigationGroup.Plataforma, NavigationGroup.Admin];
 
-		const adminItems = visibleItems
-			.filter((item) => item.group === NavigationGroup.Admin)
-			.map((item) => ({ title: item.title, icon: item.icon, url: item.to }));
-
-		return [
-			{ label: NAVIGATION_GROUP_LABELS[NavigationGroup.Main], items: mainItems },
-			{ label: NAVIGATION_GROUP_LABELS[NavigationGroup.Admin], items: adminItems }
-		].filter((group) => group.items.length > 0);
-	});
+	let navMainGroups = $derived.by(() =>
+		GROUP_ORDER.map((group) => ({
+			label: NAVIGATION_GROUP_LABELS[group],
+			items: visibleItems
+				.filter((item) => item.group === group)
+				.map((item) => ({ title: item.title, icon: item.icon, url: item.to }))
+		})).filter((group) => group.items.length > 0)
+	);
 
 	let displayUser = $derived({
 		name: user?.name ?? user?.email ?? 'User',
