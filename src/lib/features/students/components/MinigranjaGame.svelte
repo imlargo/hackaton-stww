@@ -66,9 +66,9 @@
 		{/if}
 	</div>
 
-	{#if state}
+	{#if gameState}
 		<div class="grid grid-cols-3 gap-3">
-			{#each state.plots as plot (plot.id)}
+			{#each gameState.plots as plot (plot.id)}
 				{@const name = animalName(plot.animal_id)}
 				<button
 					type="button"
