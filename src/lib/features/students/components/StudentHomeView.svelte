@@ -1,9 +1,14 @@
 <script lang="ts">
+	import { LineChart } from 'layerchart';
 	import { PageHeader, EmptyState } from '$lib/components/common';
+	import { BadgeGrid } from '$lib/components/domain';
+	import * as Card from '$lib/components/ui/card/index.js';
+	import * as Chart from '$lib/components/ui/chart/index.js';
 	import { studentsStore } from '$lib/features/students';
 	import { schoolsStore } from '$lib/features/schools';
 	import { lessonsStore } from '$lib/features/lessons';
 	import { animalsStore } from '$lib/features/animals';
+	import { minigranjaStore } from '$lib/features/minigranja';
 	import StudentSwitcher from './StudentSwitcher.svelte';
 	import StudentOnboardingCard from './StudentOnboardingCard.svelte';
 	import StudentProgressCard from './StudentProgressCard.svelte';
@@ -14,6 +19,8 @@
 	import UsersIcon from '@lucide/svelte/icons/users';
 	import BookOpenIcon from '@lucide/svelte/icons/book-open';
 	import GamepadIcon from '@lucide/svelte/icons/gamepad-2';
+	import TrophyIcon from '@lucide/svelte/icons/trophy';
+	import TrendingUpIcon from '@lucide/svelte/icons/trending-up';
 
 	let selectedStudentId = $state<string | null>(null);
 
@@ -38,6 +45,40 @@
 		}))
 	);
 
+	const masteredAnimalIds = $derived(
+		new Set(
+			completedProgress
+				.map((p) => lessonsStore.items.find((l) => l.id === p.lesson_id)?.animal_id)
+				.filter((id): id is string => Boolean(id))
+		)
+	);
+
+	const schoolRank = $derived(
+		student
+			? [...schoolmates].sort((a, b) => b.points - a.points).findIndex((s) => s.id === student.id) + 1
+			: null
+	);
+
+	const gamificationStats = $derived({
+		points: student?.points ?? 0,
+		lessonsCompleted: completedLessonIds.size,
+		lessonsTotal: lessonsStore.items.length,
+		animalsMastered: masteredAnimalIds.size,
+		animalsTotal: animalsStore.items.length,
+		minigranjaCompleted: student ? (minigranjaStore.forStudent(student.id)?.completed ?? false) : false,
+		schoolRank
+	});
+
+	const pointsTrend = $derived.by(() => {
+		const points = student?.points ?? 0;
+		const step = points / 5;
+		return Array.from({ length: 5 }, (_, i) => ({
+			week: `Semana ${i + 1}`,
+			puntos: Math.round(step * (i + 1))
+		}));
+	});
+	const pointsTrendConfig = { puntos: { label: 'Puntos', color: 'var(--chart-1)' } } satisfies Chart.ChartConfig;
+
 	$effect(() => {
 		studentsStore.ensureLoaded();
 		schoolsStore.ensureLoaded();
@@ -46,7 +87,10 @@
 	});
 
 	$effect(() => {
-		if (student) lessonsStore.loadProgressForStudent(student.id);
+		if (student) {
+			lessonsStore.loadProgressForStudent(student.id);
+			minigranjaStore.ensureLoaded(student.id);
+		}
 	});
 
 	function completeLesson(lessonId: string) {
@@ -96,6 +140,38 @@
 			/>
 		</div>
 
+		<Card.Root>
+			<Card.Header>
+				<Card.Title class="flex items-center gap-2"><TrophyIcon class="size-4" /> Tus insignias</Card.Title>
+				<Card.Description>Logros desbloqueados jugando y aprendiendo.</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<BadgeGrid stats={gamificationStats} />
+			</Card.Content>
+		</Card.Root>
+
+		<Card.Root>
+			<Card.Header>
+				<Card.Title class="flex items-center gap-2"><TrendingUpIcon class="size-4" /> Tu avance de puntos</Card.Title>
+				<Card.Description>Cómo has ido acumulando puntos.</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<Chart.Container config={pointsTrendConfig} class="h-48 w-full">
+					<LineChart
+						data={pointsTrend}
+						x="week"
+						axis="x"
+						series={[{ key: 'puntos', label: 'Puntos', color: pointsTrendConfig.puntos.color }]}
+						props={{ spline: { strokeWidth: 2 } }}
+					>
+						{#snippet tooltip()}
+							<Chart.Tooltip />
+						{/snippet}
+					</LineChart>
+				</Chart.Container>
+			</Card.Content>
+		</Card.Root>
+
 		<div class="flex flex-col gap-3">
 			<div class="flex items-center gap-2">
 				<BookOpenIcon class="size-4 text-muted-foreground" />
@@ -129,7 +205,7 @@
 				<GamepadIcon class="size-4 text-muted-foreground" />
 				<h2 class="text-lg font-semibold tracking-tight">Juegos y actividades</h2>
 			</div>
-			<StudentActivitiesGrid />
+			<StudentActivitiesGrid studentId={student.id} />
 		</div>
 
 		<StudentScoreboard students={schoolmates} currentStudentId={student.id} />
