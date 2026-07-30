@@ -1,10 +1,16 @@
 import HomeIcon from '@lucide/svelte/icons/house';
 import SettingsIcon from '@lucide/svelte/icons/settings';
 import ShieldIcon from '@lucide/svelte/icons/shield';
+import SchoolIcon from '@lucide/svelte/icons/school';
+import SproutIcon from '@lucide/svelte/icons/sprout';
+import GraduationCapIcon from '@lucide/svelte/icons/graduation-cap';
+import Building2Icon from '@lucide/svelte/icons/building-2';
+import CalendarCheckIcon from '@lucide/svelte/icons/calendar-check';
 import { PermissionKey } from './permissions';
 
 export enum NavigationGroup {
 	Main = 'main',
+	Plataforma = 'plataforma',
 	Admin = 'admin'
 }
 

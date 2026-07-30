@@ -5,7 +5,12 @@ import { UserRole } from '$lib/types/auth/roles';
 export enum PermissionKey {
 	Dashboard = 'Dashboard',
 	Settings = 'Settings',
-	Admin = 'Admin'
+	Admin = 'Admin',
+	Colegio = 'Colegio',
+	Caracterizacion = 'Caracterizacion',
+	Estudiante = 'Estudiante',
+	Unergy = 'Unergy',
+	Visitas = 'Visitas'
 }
 
 export type PermissionGroup = PermissionKey;
@@ -24,7 +29,12 @@ export const ROLE_LABELS: Record<UserRole, string> = {
 export const PERMISSION_GROUPS = {
 	[PermissionKey.Dashboard]: [UserRole.ADMIN, UserRole.MEMBER],
 	[PermissionKey.Settings]: [UserRole.ADMIN, UserRole.MEMBER],
-	[PermissionKey.Admin]: [UserRole.ADMIN]
+	[PermissionKey.Admin]: [UserRole.ADMIN],
+	[PermissionKey.Colegio]: [UserRole.ADMIN, UserRole.MEMBER],
+	[PermissionKey.Caracterizacion]: [UserRole.ADMIN, UserRole.MEMBER],
+	[PermissionKey.Estudiante]: [UserRole.ADMIN, UserRole.MEMBER],
+	[PermissionKey.Unergy]: [UserRole.ADMIN, UserRole.MEMBER],
+	[PermissionKey.Visitas]: [UserRole.ADMIN, UserRole.MEMBER]
 } as const satisfies Record<PermissionKey, readonly UserRole[]>;
 
 // ─── Route-level access control ───────────────────────────────────────────────
@@ -33,7 +43,12 @@ export const AUTH_PUBLIC_ROUTE_PREFIXES = ['/login', '/register', '/logout', '/a
 export const AUTH_ROUTE_PERMISSIONS = {
 	'/': [...PERMISSION_GROUPS[PermissionKey.Dashboard]],
 	'/settings': [...PERMISSION_GROUPS[PermissionKey.Settings]],
-	'/admin': [...PERMISSION_GROUPS[PermissionKey.Admin]]
+	'/admin': [...PERMISSION_GROUPS[PermissionKey.Admin]],
+	'/colegio': [...PERMISSION_GROUPS[PermissionKey.Colegio]],
+	'/caracterizacion': [...PERMISSION_GROUPS[PermissionKey.Caracterizacion]],
+	'/estudiante': [...PERMISSION_GROUPS[PermissionKey.Estudiante]],
+	'/unergy': [...PERMISSION_GROUPS[PermissionKey.Unergy]],
+	'/visitas': [...PERMISSION_GROUPS[PermissionKey.Visitas]]
 } as const satisfies Record<string, readonly UserRole[]>;
 
 export const AUTH_DEFAULT_ROUTES = {
