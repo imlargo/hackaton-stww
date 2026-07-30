@@ -2,6 +2,9 @@
 export { createApiClient, ApiClient } from './api';
 export type { ApiOptions, ApiClientOptions } from './api';
 
+// Supabase client
+export { supabase } from './supabase';
+
 // Errors
 export { AppError, ApiError, ValidationError, normalizeError, getErrorMessage } from './errors';
 export type { ErrorCode } from './errors';
