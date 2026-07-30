@@ -6,6 +6,7 @@ export interface School {
 	contact_name: string | null;
 	contact_email: string | null;
 	contact_phone: string | null;
+	social_notes: string | null;
 	characterization: Record<string, unknown> | null;
 	created_at: string;
 	updated_at: string;
