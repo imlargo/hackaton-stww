@@ -82,7 +82,7 @@
 	let savingStudent = $state(false);
 
 	// Solicitar contenido
-	let requestType = $state<ContentRequestType>('animal');
+	let requestType = $state<string>('animal');
 	let requestTitle = $state('');
 	let requestDescription = $state('');
 	let requestBy = $state('');
@@ -191,7 +191,7 @@
 		try {
 			await contentRequestsStore.create({
 				school_id: selectedSchoolId,
-				type: requestType,
+				type: requestType as ContentRequestType,
 				title: requestTitle.trim(),
 				description: requestDescription.trim() || undefined,
 				requested_by: requestBy.trim() || undefined
