@@ -22,13 +22,14 @@
 		rejected: 'Rechazada'
 	};
 
-	const STATUS_VARIANTS: Record<VisitStatus, 'secondary' | 'default' | 'outline' | 'destructive'> = {
-		pending: 'secondary',
-		approved: 'outline',
-		scheduled: 'default',
-		completed: 'default',
-		rejected: 'destructive'
-	};
+	const STATUS_VARIANTS: Record<VisitStatus, 'secondary' | 'default' | 'outline' | 'destructive'> =
+		{
+			pending: 'secondary',
+			approved: 'outline',
+			scheduled: 'default',
+			completed: 'default',
+			rejected: 'destructive'
+		};
 
 	let showForm = $state(false);
 	let schoolId = $state('');
@@ -67,7 +68,10 @@
 	}
 
 	async function advance(visitId: string, status: VisitStatus, scheduledDate?: string) {
-		await visitsStore.update(visitId, scheduledDate ? { status, scheduled_date: scheduledDate } : { status });
+		await visitsStore.update(
+			visitId,
+			scheduledDate ? { status, scheduled_date: scheduledDate } : { status }
+		);
 	}
 </script>
 
@@ -77,7 +81,11 @@
 		description="Solicitud y seguimiento de visitas, disponibilidad, cronograma y a dónde va Unergy."
 	>
 		{#snippet actions()}
-			<Button size="sm" onclick={() => (showForm = !showForm)} disabled={schoolsStore.items.length === 0}>
+			<Button
+				size="sm"
+				onclick={() => (showForm = !showForm)}
+				disabled={schoolsStore.items.length === 0}
+			>
 				<PlusIcon />
 				Solicitar visita
 			</Button>
@@ -113,7 +121,9 @@
 						<Input id="visit-notes" bind:value={notes} placeholder="Detalles adicionales" />
 					</div>
 					<div class="flex justify-end gap-2 sm:col-span-2">
-						<Button type="button" variant="outline" onclick={() => (showForm = false)}>Cancelar</Button>
+						<Button type="button" variant="outline" onclick={() => (showForm = false)}
+							>Cancelar</Button
+						>
 						<Button type="submit" disabled={submitting}>Enviar solicitud</Button>
 					</div>
 				</form>
@@ -128,7 +138,10 @@
 	{:else if visitsStore.error}
 		<p class="text-sm text-destructive">{visitsStore.error}</p>
 	{:else if visitsStore.items.length === 0}
-		<EmptyState title="No hay visitas solicitadas" description="Solicita la primera visita a la minigranja.">
+		<EmptyState
+			title="No hay visitas solicitadas"
+			description="Solicita la primera visita a la minigranja."
+		>
 			{#snippet icon()}
 				<CalendarCheckIcon class="size-5" />
 			{/snippet}
@@ -151,14 +164,27 @@
 							<Table.Cell class="font-medium">{schoolName(visit.school_id)}</Table.Cell>
 							<Table.Cell>{visit.requested_by ?? '—'}</Table.Cell>
 							<Table.Cell>{visit.scheduled_date ?? visit.requested_date ?? '—'}</Table.Cell>
-							<Table.Cell><Badge variant={STATUS_VARIANTS[visit.status]}>{STATUS_LABELS[visit.status]}</Badge></Table.Cell>
+							<Table.Cell
+								><Badge variant={STATUS_VARIANTS[visit.status]}>{STATUS_LABELS[visit.status]}</Badge
+								></Table.Cell
+							>
 							<Table.Cell class="text-right">
 								{#if visit.status === 'pending'}
-									<Button size="sm" variant="outline" onclick={() => advance(visit.id, 'approved')}>Aprobar</Button>
+									<Button size="sm" variant="outline" onclick={() => advance(visit.id, 'approved')}
+										>Aprobar</Button
+									>
 								{:else if visit.status === 'approved'}
-									<Button size="sm" variant="outline" onclick={() => advance(visit.id, 'scheduled', visit.requested_date ?? undefined)}>Programar</Button>
+									<Button
+										size="sm"
+										variant="outline"
+										onclick={() =>
+											advance(visit.id, 'scheduled', visit.requested_date ?? undefined)}
+										>Programar</Button
+									>
 								{:else if visit.status === 'scheduled'}
-									<Button size="sm" variant="outline" onclick={() => advance(visit.id, 'completed')}>Completar</Button>
+									<Button size="sm" variant="outline" onclick={() => advance(visit.id, 'completed')}
+										>Completar</Button
+									>
 								{/if}
 							</Table.Cell>
 						</Table.Row>

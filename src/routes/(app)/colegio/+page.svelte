@@ -103,7 +103,12 @@
 				<form class="grid gap-3 sm:grid-cols-2" onsubmit={submitSchool}>
 					<div class="flex flex-col gap-1.5 sm:col-span-2">
 						<label class="text-sm font-medium" for="school-name">Nombre del colegio</label>
-						<Input id="school-name" bind:value={schoolName} placeholder="Institución Educativa..." required />
+						<Input
+							id="school-name"
+							bind:value={schoolName}
+							placeholder="Institución Educativa..."
+							required
+						/>
 					</div>
 					<div class="flex flex-col gap-1.5">
 						<label class="text-sm font-medium" for="school-city">Ciudad</label>
@@ -115,10 +120,17 @@
 					</div>
 					<div class="flex flex-col gap-1.5 sm:col-span-2">
 						<label class="text-sm font-medium" for="school-email">Correo de contacto</label>
-						<Input id="school-email" type="email" bind:value={contactEmail} placeholder="contacto@colegio.edu.co" />
+						<Input
+							id="school-email"
+							type="email"
+							bind:value={contactEmail}
+							placeholder="contacto@colegio.edu.co"
+						/>
 					</div>
 					<div class="flex justify-end gap-2 sm:col-span-2">
-						<Button type="button" variant="outline" onclick={() => (showSchoolForm = false)}>Cancelar</Button>
+						<Button type="button" variant="outline" onclick={() => (showSchoolForm = false)}
+							>Cancelar</Button
+						>
 						<Button type="submit" disabled={savingSchool}>Guardar</Button>
 					</div>
 				</form>
@@ -166,7 +178,9 @@
 					<Card.Title class="text-sm font-medium">Promedio por estudiante</Card.Title>
 				</Card.Header>
 				<Card.Content>
-					<div class="text-2xl font-bold">{roster.length ? Math.round(totalPoints / roster.length) : 0}</div>
+					<div class="text-2xl font-bold">
+						{roster.length ? Math.round(totalPoints / roster.length) : 0}
+					</div>
 				</Card.Content>
 			</Card.Root>
 		</section>
@@ -187,14 +201,21 @@
 					<form class="grid gap-3 rounded-lg border p-3 sm:grid-cols-3" onsubmit={submitStudent}>
 						<div class="flex flex-col gap-1.5 sm:col-span-2">
 							<label class="text-sm font-medium" for="student-name">Nombre</label>
-							<Input id="student-name" bind:value={studentName} placeholder="Nombre del estudiante" required />
+							<Input
+								id="student-name"
+								bind:value={studentName}
+								placeholder="Nombre del estudiante"
+								required
+							/>
 						</div>
 						<div class="flex flex-col gap-1.5">
 							<label class="text-sm font-medium" for="student-grade">Grado</label>
 							<Input id="student-grade" bind:value={studentGrade} placeholder="5°" />
 						</div>
 						<div class="flex justify-end gap-2 sm:col-span-3">
-							<Button type="button" variant="outline" onclick={() => (showStudentForm = false)}>Cancelar</Button>
+							<Button type="button" variant="outline" onclick={() => (showStudentForm = false)}
+								>Cancelar</Button
+							>
 							<Button type="submit" disabled={savingStudent}>Guardar</Button>
 						</div>
 					</form>

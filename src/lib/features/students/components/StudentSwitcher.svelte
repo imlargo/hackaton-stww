@@ -21,6 +21,6 @@
 </script>
 
 <div class="flex items-center gap-2">
-	<span class="text-sm text-muted-foreground whitespace-nowrap">Modo demo, ver como:</span>
+	<span class="text-sm whitespace-nowrap text-muted-foreground">Modo demo, ver como:</span>
 	<Select {options} value={value ?? undefined} onchange={(v: string) => onchange(v || null)} />
 </div>

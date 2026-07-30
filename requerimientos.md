@@ -21,6 +21,7 @@ Plataforma con 4 vistas que conecta colegios, estudiantes y Unergy alrededor de 
 - Solicitar/enviar contenido a la plataforma (ej. animales, para ayudar a los alumnos a identificarlos).
 - Gamificación.
 - Dashboard/analíticas.
+- 
 
 ### 2. Caracterización y minigranja
 - Antes de construir una minigranja se hace una caracterización.

@@ -60,7 +60,11 @@ export class LessonsStore {
 
 	/** Marks a lesson as complete for a student and awards its points. */
 	async completeForStudent(studentId: string, lesson: Lesson) {
-		const progress = await lessonService.completeForStudent(studentId, lesson.id, lesson.points_reward);
+		const progress = await lessonService.completeForStudent(
+			studentId,
+			lesson.id,
+			lesson.points_reward
+		);
 		this.progressByStudent = {
 			...this.progressByStudent,
 			[studentId]: [...(this.progressByStudent[studentId] ?? []), progress]

@@ -78,7 +78,10 @@
 			<LoaderCircleIcon class="size-6 animate-spin text-muted-foreground" />
 		</div>
 	{:else if !student || !school}
-		<EmptyState title="Aún no hay estudiantes registrados" description="Inscribe estudiantes desde el dashboard del colegio.">
+		<EmptyState
+			title="Aún no hay estudiantes registrados"
+			description="Inscribe estudiantes desde el dashboard del colegio."
+		>
 			{#snippet icon()}
 				<UsersIcon class="size-5" />
 			{/snippet}
@@ -99,7 +102,10 @@
 				<h2 class="text-lg font-semibold tracking-tight">Lecciones</h2>
 			</div>
 			{#if lessonsWithAnimal.length === 0}
-				<EmptyState title="Aún no hay lecciones" description="Unergy todavía no ha publicado contenido.">
+				<EmptyState
+					title="Aún no hay lecciones"
+					description="Unergy todavía no ha publicado contenido."
+				>
 					{#snippet icon()}
 						<BookOpenIcon class="size-5" />
 					{/snippet}

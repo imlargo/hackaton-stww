@@ -28,7 +28,8 @@ const SEED: Animal[] = [
 		name: 'Dendrobates truncatus',
 		common_name: 'Rana venenosa dorada',
 		category: 'Anfibios',
-		care_info: 'Terrario húmedo con vegetación densa; requiere manejo especializado y no manipulación directa.',
+		care_info:
+			'Terrario húmedo con vegetación densa; requiere manejo especializado y no manipulación directa.',
 		image_url: null,
 		created_at: now()
 	}

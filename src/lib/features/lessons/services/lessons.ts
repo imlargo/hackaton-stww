@@ -8,7 +8,8 @@ const SEED: Lesson[] = [
 		id: id(),
 		title: 'Cuidados básicos de la gallina',
 		description: 'Aprende qué comen, dónde duermen y cómo mantenerlas sanas.',
-		content: 'Las gallinas necesitan un gallinero limpio, agua fresca todos los días y alimento balanceado.',
+		content:
+			'Las gallinas necesitan un gallinero limpio, agua fresca todos los días y alimento balanceado.',
 		animal_id: SEED_ANIMAL_IDS.gallina,
 		points_reward: 10,
 		order_index: 0,
@@ -18,7 +19,8 @@ const SEED: Lesson[] = [
 		id: id(),
 		title: 'El hogar del conejo',
 		description: 'Cómo construir y mantener una conejera adecuada.',
-		content: 'Los conejos necesitan espacio ventilado, heno siempre disponible y protección del sol directo.',
+		content:
+			'Los conejos necesitan espacio ventilado, heno siempre disponible y protección del sol directo.',
 		animal_id: SEED_ANIMAL_IDS.conejo,
 		points_reward: 10,
 		order_index: 1,
@@ -28,7 +30,8 @@ const SEED: Lesson[] = [
 		id: id(),
 		title: '¿Qué es una caracterización?',
 		description: 'Por qué se estudia el terreno y los recursos antes de construir la minigranja.',
-		content: 'Antes de construir, se revisa el espacio disponible, el clima y los recursos de la comunidad.',
+		content:
+			'Antes de construir, se revisa el espacio disponible, el clima y los recursos de la comunidad.',
 		animal_id: null,
 		points_reward: 15,
 		order_index: 2,

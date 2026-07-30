@@ -71,7 +71,10 @@
 			<LoaderCircleIcon class="size-6 animate-spin text-muted-foreground" />
 		</div>
 	{:else if schoolsStore.items.length === 0}
-		<EmptyState title="No hay colegios registrados" description="Registra un colegio en la vista Colegio antes de caracterizar su minigranja.">
+		<EmptyState
+			title="No hay colegios registrados"
+			description="Registra un colegio en la vista Colegio antes de caracterizar su minigranja."
+		>
 			{#snippet icon()}
 				<SproutIcon class="size-5" />
 			{/snippet}
@@ -91,7 +94,9 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Caracterización del espacio</Card.Title>
-				<Card.Description>Se cruza con el contenido disponible para decidir qué animales enseñar a cuidar.</Card.Description>
+				<Card.Description
+					>Se cruza con el contenido disponible para decidir qué animales enseñar a cuidar.</Card.Description
+				>
 			</Card.Header>
 			<Card.Content>
 				<form class="grid gap-3 sm:grid-cols-2" onsubmit={submit}>
@@ -109,7 +114,12 @@
 					</div>
 					<div class="flex flex-col gap-1.5 sm:col-span-2">
 						<label class="text-sm font-medium" for="resources">Recursos disponibles</label>
-						<Textarea id="resources" bind:value={resources} rows={3} placeholder="Materiales, apoyo de la comunidad, etc." />
+						<Textarea
+							id="resources"
+							bind:value={resources}
+							rows={3}
+							placeholder="Materiales, apoyo de la comunidad, etc."
+						/>
 					</div>
 					<div class="flex items-center justify-end gap-2 sm:col-span-2">
 						{#if saved}
@@ -124,7 +134,9 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Animales sugeridos para {currentSchool?.name ?? 'la minigranja'}</Card.Title>
-				<Card.Description>A partir de la caracterización, se enseña a los estudiantes a cuidar estas especies.</Card.Description>
+				<Card.Description
+					>A partir de la caracterización, se enseña a los estudiantes a cuidar estas especies.</Card.Description
+				>
 			</Card.Header>
 			<Card.Content class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each animalsStore.items as animal (animal.id)}
