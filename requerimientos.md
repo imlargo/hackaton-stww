@@ -1,5 +1,11 @@
 # Producto: Plataforma educativa Unergy - Minigranjas
 
+## Motivación / Propósito social
+
+Es una plataforma que sirve como portal, con un motivo social, para que estudiantes de colegios, docentes y comunidades en general participen en la construcción de minigranjas de la empresa Unergy, con el objetivo de generar impacto social y educativo en las comunidades donde estas minigranjas se construyen (educación ambiental/energética, cuidado animal y fortalecimiento del vínculo colegio-comunidad).
+
+> Nota: frase de origen quedó incompleta ("...con el objetivo de impactar"); completar/ajustar si el alcance del impacto (ambiental, social, educativo, económico) es distinto al enunciado arriba.
+
 ## Core / Definición del producto
 
 Plataforma con 4 vistas que conecta colegios, estudiantes y Unergy alrededor de la construcción de una **minigranja**. Los colegios se registran, los niños se inscriben y aprenden mediante contenido, lecciones, juegos y gamificación. Antes de construir la minigranja se hace una **caracterización** que se cruza con la información disponible, y a partir de ahí se enseña a los estudiantes a cuidar los animales correspondientes. Tanto colegio como estudiante pueden solicitar y hacer seguimiento a visitas (a la minigranja/comunidad), ver disponibilidad, cronograma y a dónde va Unergy. La idea es que se gane puntos para acceder a la visita. Unergy tiene su propia vista para gestionar colegios, contenido, métricas y prospectos.

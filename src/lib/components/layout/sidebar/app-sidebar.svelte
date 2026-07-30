@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import LayoutIcon from '@lucide/svelte/icons/layout-dashboard';
 	import type { ComponentProps } from 'svelte';
 	import type { User } from '$lib/types/auth/user';
 	import {
@@ -73,10 +72,8 @@
 				>
 					{#snippet child({ props })}
 						<a href="/" {...props}>
-							<div
-								class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-							>
-								<LayoutIcon class="size-4" />
+							<div class="flex aspect-square size-8 items-center justify-center">
+								<img src="/logo.png" alt="Mi primera minigranja" class="size-8 object-contain" />
 							</div>
 							<div class="grid flex-1 text-start text-sm leading-tight">
 								<span class="truncate font-semibold">Mi primera minigranja</span>

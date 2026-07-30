@@ -9,8 +9,9 @@ export { supabase } from './supabase';
 export { AppError, ApiError, ValidationError, normalizeError, getErrorMessage } from './errors';
 export type { ErrorCode } from './errors';
 
-// Service base class
+// Service base classes
 export { BaseService } from './service';
+export { MockService, id, now } from './mock-service';
 
 // Async loading helper
 export { withLoading } from './helpers/with-loading.svelte';
