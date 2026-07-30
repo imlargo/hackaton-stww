@@ -13,6 +13,8 @@ const SEED: School[] = [
 		contact_name: 'Marta Gómez',
 		contact_email: 'marta.gomez@ieelroble.edu.co',
 		contact_phone: '300 123 4567',
+		social_notes:
+			'Comunidad rural cafetera, 180 familias. El colegio es el único punto de encuentro comunitario de la vereda.',
 		characterization: null,
 		created_at: now(),
 		updated_at: now()
@@ -25,6 +27,8 @@ const SEED: School[] = [
 		contact_name: 'Julián Restrepo',
 		contact_email: 'jrestrepo@buenavista.edu.co',
 		contact_phone: '311 987 6543',
+		social_notes:
+			'Zona campesina con acceso limitado a agua potable; el colegio funciona también como comedor comunitario.',
 		characterization: null,
 		created_at: now(),
 		updated_at: now()
@@ -53,6 +57,7 @@ export class SchoolService extends MockService<School> {
 			contact_name: input.contact_name ?? null,
 			contact_email: input.contact_email ?? null,
 			contact_phone: input.contact_phone ?? null,
+			social_notes: input.social_notes ?? null,
 			characterization: null,
 			created_at: now(),
 			updated_at: now()
